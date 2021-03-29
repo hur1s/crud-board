@@ -1,0 +1,30 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+
+  .navigation {
+    align-items: center;
+    background-color: gray;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    border-bottom: solid 1px black;
+
+    &__add-button {
+      background-color: blue;
+      border-radius: 4px;
+      color: white;
+      cursor: pointer;
+      display: inline-block;
+      padding: 4px;
+      &:hover {
+        background-color: darkblue;
+      }
+    }
+  }
+}
