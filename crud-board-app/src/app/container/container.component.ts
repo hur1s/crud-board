@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Sort } from '../models/sort-type';
-import { ContainerComponentService } from './services/container.component.service';
+import { ContainerComponentService } from './services/container-component.service';
 
 @Component({
   selector: 'app-container',

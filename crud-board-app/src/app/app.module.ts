@@ -8,7 +8,7 @@ import { ContainerComponent } from './container/container.component';
 import { BoardComponent } from './board/board.component';
 import { IdeaComponent } from './idea/idea.component';
 import { AppService } from './services/app-service';
-import { ContainerComponentService } from './container/services/container.component.service';
+import { ContainerComponentService } from './container/services/container-component.service';
 import { BoardComponentService } from './board/services/board-component.service';
 
 @NgModule({

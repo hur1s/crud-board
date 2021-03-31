@@ -11,10 +11,6 @@ import { BoardComponentService } from './services/board-component.service';
   styleUrls: ['./board.component.scss'],
 })
 export class BoardComponent implements OnInit, OnDestroy {
-  private _sortByDate: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
-    true
-  );
-
   constructor(private _componentService: BoardComponentService) {}
 
   @Input()

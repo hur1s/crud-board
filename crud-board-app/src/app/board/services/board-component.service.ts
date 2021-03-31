@@ -1,7 +1,7 @@
 import { AppService } from '../../services/app-service';
 import { Idea } from '../../models/idea';
 import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, takeUntil } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Sort } from '../../models/sort-type';
 import { compareDesc } from 'date-fns';
@@ -23,15 +23,18 @@ export class BoardComponentService {
   }
 
   private static sortByTitle(a: Idea, b: Idea): number {
-    return a.title === b.title
+    const aTitle = a.title.toLowerCase();
+    const bTitle = b.title.toLowerCase();
+    return aTitle === bTitle
       ? BoardComponentService.sortByDate(a, b)
-      : a.title < b.title
+      : aTitle < bTitle
       ? -1
       : 1;
   }
 
   public get ideas(): Observable<Idea[]> {
     return combineLatest([this._appSerivce.getIdeas(), this._sortByDate]).pipe(
+      takeUntil(this._disposed),
       map(([ideas, sortByDate]) => {
         return ideas.sort((a, b) => {
           return sortByDate

@@ -46,7 +46,6 @@ export class IdeaComponent implements OnInit, AfterViewInit {
   }
 
   public ngOnInit(): void {
-    console.log('IdeaComponent ' + this.id);
   }
 
   public ngAfterViewInit() {
