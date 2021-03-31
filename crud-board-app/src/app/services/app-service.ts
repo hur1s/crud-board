@@ -24,7 +24,6 @@ export class AppService {
         const newIdea = this.createNewIdea();
         this._ideasCache.set(newIdea.id, newIdea);
         this.updateStream();
-        // this._ideas.next([newIdea]);
         resolve();
       } catch (error) {
         reject(error);
@@ -41,6 +40,7 @@ export class AppService {
             title: update.title,
             description: update.description,
             lastUpdated: new Date(),
+            state: IdeaState.Updated,
           };
           this._ideasCache.set(updatedIdea.id, updatedIdea);
           this.updateStream();
