@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Idea } from '../models/idea';
+import { Sort } from '../models/sort-type';
 import { ContainerComponentService } from './services/container.component.service';
 
 @Component({
@@ -9,6 +9,9 @@ import { ContainerComponentService } from './services/container.component.servic
 })
 export class ContainerComponent implements OnInit {
   constructor(private _componentService: ContainerComponentService) {}
+
+  public sortOptions: Sort[] = ['Date Created', 'Title'];
+  public sortValue: Sort = 'Date Created';
 
   public ngOnInit(): void {}
 

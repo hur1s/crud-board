@@ -1,6 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Idea } from '../models/idea';
+import { Sort } from '../models/sort-type';
 import { BoardComponentService } from './services/board-component.service';
 
 @Component({
@@ -9,7 +11,16 @@ import { BoardComponentService } from './services/board-component.service';
   styleUrls: ['./board.component.scss'],
 })
 export class BoardComponent implements OnInit, OnDestroy {
+  private _sortByDate: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+    true
+  );
+
   constructor(private _componentService: BoardComponentService) {}
+
+  @Input()
+  public set selectedSortOption(option: Sort) {
+    this._componentService.setSortBy(option);
+  }
 
   public ngOnInit(): void {
     this._componentService.start();

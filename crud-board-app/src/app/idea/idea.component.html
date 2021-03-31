@@ -1,7 +1,10 @@
-<div>
-  <div>{{ lastUpdated }}</div>
+<div class="idea-container">
+  <div class="idea-container__title-row">
+    <input #titleInput type="text" [(ngModel)]="title" />
+    <button class="idea-container__close-btn" (click)="deleteIdea()">X</button>
+  </div>
+  <div>{{ created }}</div>
+  <div><textarea [(ngModel)]="description"></textarea></div>
+  <button (click)="saveIdea()">Save</button>
   <div>{{ id }}</div>
-  <div contenteditable="true">{{ title }}</div>
-  <div contenteditable="true">{{ description }}</div>
-  <span (click)="saveIdea()">Save</span>
 </div>

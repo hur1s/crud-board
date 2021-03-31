@@ -1,0 +1,9 @@
+.idea-container {
+  &__title-row {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__close-btn {
+    cursor: pointer;
+  }
+}

@@ -1,5 +1,15 @@
 <div class="navigation">
-  <span class="navigation__title">Ideas Board</span>
-  <span (click)="addIdea()" class="navigation__add-button">Add</span>
+  <div class="navigation__title">Ideas Board</div>
+  <div>
+    <label>Sort by</label>
+    <select [(ngModel)]="sortValue">
+      <option *ngFor="let option of sortOptions" [ngValue]="option">
+        {{ option }}
+      </option>
+    </select>
+  </div>
+  <div class="navigation__add-button">
+    <button (click)="addIdea()">Add</button>
+  </div>
 </div>
-<app-board></app-board>
+<app-board [selectedSortOption]="sortValue"></app-board>

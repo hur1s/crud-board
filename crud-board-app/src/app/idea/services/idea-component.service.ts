@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { IdeaUpdateRequest } from '../../models/idea-update-request';
 import { AppService } from '../../services/app-service';
 import { IdeaComponent } from '../idea.component';
 
@@ -10,7 +11,11 @@ export class IdeaComponentService {
     console.log('IdeaComponentService constructor');
   }
 
-  public async updateIdea(): Promise<void> {
-    return this._appService.updateIdea();
+  public async updateIdea(update: IdeaUpdateRequest): Promise<void> {
+    return this._appService.updateIdea(update);
+  }
+
+  public async deleteIdea(ideaId: string): Promise<void> {
+    return this._appService.deleteIdea(ideaId);
   }
 }
