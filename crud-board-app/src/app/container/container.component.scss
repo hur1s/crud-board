@@ -1,3 +1,5 @@
+@import "../styles/common";
+
 :host {
   display: flex;
   flex-direction: column;
@@ -5,26 +7,37 @@
   overflow: hidden;
   position: absolute;
   width: 100%;
+}
 
-  .navigation {
-    align-items: center;
-    background-color: gray;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    padding: 8px;
-    border-bottom: solid 1px black;
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: gray;
+  color: white;
+  border-bottom: solid 1px black;
+  @include padding(2);
 
-    &__add-button {
-      background-color: blue;
-      border-radius: 4px;
-      color: white;
-      cursor: pointer;
-      display: inline-block;
-      padding: 4px;
-      &:hover {
-        background-color: darkblue;
-      }
+  &__title {
+    display: none;
+    @media only screen and (min-width: 600px) {
+      display: block;
     }
+  }
+
+  &__sort-label {
+    display: none;
+    @media only screen and (min-width: 600px) {
+      display: inline;
+      margin-right: $defaultGutterSpacing;
+    }
+  }
+
+  &__sort-dropdown {
+    @include padding;
+  }
+
+  &__add-button {
+    @include button;
   }
 }

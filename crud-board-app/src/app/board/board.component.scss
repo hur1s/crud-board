@@ -3,9 +3,22 @@
   display: block;
   flex: 1;
   padding: 8px;
+  overflow-y: auto;
 }
 
 .board-container {
-  display: flex;
-  flex-wrap: wrap;
+  @media only screen and (min-width: 600px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media only screen and (min-width: 768px) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media only screen and (min-width: 1200px) {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
 }

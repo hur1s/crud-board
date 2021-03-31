@@ -31,7 +31,6 @@ export class BoardComponentService {
   }
 
   public get ideas(): Observable<Idea[]> {
-    // return this._appSerivce.getIdeas();
     return combineLatest([this._appSerivce.getIdeas(), this._sortByDate]).pipe(
       map(([ideas, sortByDate]) => {
         return ideas.sort((a, b) => {
@@ -43,18 +42,7 @@ export class BoardComponentService {
     );
   }
 
-  public start(): void {
-    // this._appSerivce
-    //   .getIdeas()
-    //   .pipe(
-    //     takeUntil(this._disposed),
-    //     tap((ideas) => {
-    //       this._ideas = [...this._ideas]
-    //       console.log(this._ideas);
-    //     })
-    //   )
-    //   .subscribe();
-  }
+  public start(): void {}
 
   public end(): void {
     this._disposed.next();

@@ -1,9 +1,41 @@
+@import "../styles/common";
+
 .idea-container {
+  box-shadow: 2px 2px #999999;
+  background-color: khaki;
+  @include margin;
+  @include padding(2);
+
   &__title-row {
     display: flex;
     justify-content: space-between;
   }
+  &__title-input {
+    min-width: 0;
+    @include padding;
+  }
+  &__description {
+    padding: $defaultGutterSpacing * 2 0;
+  }
+  &__description-input {
+    resize: none;
+    width: 100%;
+    @include calcBoxMinHeight(60px);
+    @include padding;
+    @include font-family;
+  }
   &__close-btn {
-    cursor: pointer;
+    @include button(red);
+  }
+  &__date-stamp {
+    font-size: 12px;
+  }
+  &__save-btn {
+    @include button;
+  }
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 }

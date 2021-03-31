@@ -1,10 +1,23 @@
 <div class="idea-container">
   <div class="idea-container__title-row">
-    <input #titleInput type="text" [(ngModel)]="title" />
+    <input
+      class="idea-container__title-input"
+      placeholder="Title"
+      #titleInput
+      type="text"
+      [(ngModel)]="title"
+    />
     <button class="idea-container__close-btn" (click)="deleteIdea()">X</button>
   </div>
-  <div>{{ created }}</div>
-  <div><textarea [(ngModel)]="description"></textarea></div>
-  <button (click)="saveIdea()">Save</button>
-  <div>{{ id }}</div>
+  <div class="idea-container__description">
+    <textarea
+      placeholder="Description"
+      class="idea-container__description-input"
+      [(ngModel)]="description"
+    ></textarea>
+  </div>
+  <div class="idea-container__footer">
+    <div class="idea-container__date-stamp">Updated: {{ lastUpdated }}</div>
+    <button class="idea-container__save-btn" (click)="saveIdea()">Save</button>
+  </div>
 </div>
