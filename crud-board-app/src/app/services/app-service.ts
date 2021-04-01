@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Idea } from '../models/idea';
 import { IdeaState } from '../models/idea-state';
 import { v4 as guid } from 'uuid';

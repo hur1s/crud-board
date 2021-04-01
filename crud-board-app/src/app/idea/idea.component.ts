@@ -29,6 +29,9 @@ export class IdeaComponent implements OnInit, AfterViewInit {
   public id = '';
   public state: IdeaState;
 
+  public readonly maxDescriptionChars = 140;
+  public remainingDescChars = 140;
+
   @ViewChild('titleInput') titleInput: ElementRef;
 
   @Input()
@@ -43,10 +46,11 @@ export class IdeaComponent implements OnInit, AfterViewInit {
       : '';
     this.id = idea.id;
     this.state = idea.state;
+
+    this.onDescriptionChange(this.description);
   }
 
-  public ngOnInit(): void {
-  }
+  public ngOnInit(): void {}
 
   public ngAfterViewInit() {
     if (!this.title) {
@@ -65,5 +69,9 @@ export class IdeaComponent implements OnInit, AfterViewInit {
 
   public async deleteIdea(): Promise<void> {
     await this._componentService.deleteIdea(this.id);
+  }
+
+  public onDescriptionChange(value: string): void {
+    this.remainingDescChars = this.maxDescriptionChars - value.length;
   }
 }

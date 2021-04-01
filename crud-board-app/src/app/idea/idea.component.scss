@@ -20,9 +20,13 @@
   &__description-input {
     resize: none;
     width: 100%;
-    @include calcBoxMinHeight(60px);
+    @include calcBoxMinHeight(50px);
     @include padding;
     @include font-family;
+  }
+  &__remaining-chars {
+    text-align: right;
+    font-size: 11px;
   }
   &__close-btn {
     @include button(red);

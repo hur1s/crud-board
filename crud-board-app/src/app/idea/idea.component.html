@@ -13,8 +13,11 @@
     <textarea
       placeholder="Description"
       class="idea-container__description-input"
+      [maxlength]="maxDescriptionChars"
       [(ngModel)]="description"
+      (ngModelChange)="onDescriptionChange($event)"
     ></textarea>
+    <div class="idea-container__remaining-chars">{{ remainingDescChars }}</div>
   </div>
   <div class="idea-container__footer">
     <div class="idea-container__date-stamp">Updated: {{ lastUpdated }}</div>

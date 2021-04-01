@@ -2,7 +2,6 @@ import { AppService } from './app-service';
 import { IdeaState } from '../models/idea-state';
 import { take } from 'rxjs/operators';
 import { Idea } from '../models/idea';
-import { hot, cold } from 'jasmine-marbles';
 
 describe('AppService', () => {
   let service: AppService;
@@ -41,6 +40,7 @@ describe('AppService', () => {
     };
     (service as any)._ideasCache.set(newIdea.id, newIdea);
 
+    // TODO - jasmine.objectContaining not asserting correctly(?) when used with marbles
     // const expected = cold('a', {
     //   a: jasmine.arrayContaining([
     //     jasmine.objectContaining({
