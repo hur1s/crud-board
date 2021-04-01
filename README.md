@@ -2,7 +2,7 @@
 
 This project was created with Angular version 11.2.6.
 
-https://hur1s.github.io/crud-board-app
+https://hur1s.github.io/crud-board
 
 ## Completed
 
