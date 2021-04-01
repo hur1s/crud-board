@@ -2,6 +2,8 @@
 
 This project was created with Angular version 11.2.6.
 
+https://hur1s.github.io/crud-board-app
+
 ## Completed
 
 - Page is responsive (Tested in Chrome)
