@@ -11,9 +11,17 @@ describe('IdeaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ IdeaComponent ],
-    }).overrideProvider(IdeaComponentService, {useValue: { updateIdea: () => Promise.resolve(), deleteIdea: () => Promise.resolve()}})
-    .compileComponents();
+      declarations: [IdeaComponent],
+      providers: [
+        {
+          provide: IdeaComponentService,
+          useValue: {
+            updateIdea: () => Promise.resolve(),
+            deleteIdea: () => Promise.resolve(),
+          },
+        },
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -29,10 +37,18 @@ describe('IdeaComponent', () => {
 
   it('should call the IdeaComponentService to update an idea', async () => {
     const spy = spyOn(service, 'updateIdea');
-    component.model = createMockIdea('id1234', 'AAA Title', new Date(2018, 12, 1));
+    component.model = createMockIdea(
+      'id1234',
+      'AAA Title',
+      new Date(2018, 12, 1)
+    );
 
     await component.saveIdea();
     expect(spy).toHaveBeenCalledTimes(1);
-    expect(spy).toHaveBeenCalledWith({id: component.id, title: component.title, description: component.description});
+    expect(spy).toHaveBeenCalledWith({
+      id: component.id,
+      title: component.title,
+      description: component.description,
+    });
   });
 });

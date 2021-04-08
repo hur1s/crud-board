@@ -32,7 +32,7 @@ export class BoardComponentService {
       : 1;
   }
 
-  public get ideas(): Observable<Idea[]> {
+  public getIdeas(): Observable<Idea[]> {
     return combineLatest([this._appSerivce.getIdeas(), this._sortByDate]).pipe(
       takeUntil(this._disposed),
       map(([ideas, sortByDate]) => {

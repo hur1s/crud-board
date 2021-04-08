@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { BehaviorSubject, combineLatest, Observable, of, Subject } from 'rxjs';
+import { catchError, map, takeUntil, tap } from 'rxjs/operators';
 import { Idea } from '../models/idea';
 import { Sort } from '../models/sort-type';
 import { BoardComponentService } from './services/board-component.service';
@@ -11,11 +11,29 @@ import { BoardComponentService } from './services/board-component.service';
   styleUrls: ['./board.component.scss'],
 })
 export class BoardComponent implements OnInit, OnDestroy {
+  private _disposed = new Subject();
+
   constructor(private _componentService: BoardComponentService) {}
+
+  public ideas: Idea[] = [];
 
   @Input()
   public set selectedSortOption(option: Sort) {
     this._componentService.setSortBy(option);
+
+    this._componentService
+      .getIdeas()
+      .pipe(
+        takeUntil(this._disposed),
+        tap((ideas) => {
+          this.ideas = ideas;
+        }),
+        catchError((error) => {
+          console.error(JSON.stringify(error));
+          return of([]);
+        })
+      )
+      .subscribe();
   }
 
   public ngOnInit(): void {
@@ -23,10 +41,7 @@ export class BoardComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
+    this._disposed.next();
     this._componentService.end();
-  }
-
-  public getIdeas(): Observable<Idea[]> {
-    return this._componentService.ideas;
   }
 }

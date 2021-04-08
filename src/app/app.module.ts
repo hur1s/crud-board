@@ -10,6 +10,7 @@ import { IdeaComponent } from './idea/idea.component';
 import { AppService } from './services/app-service';
 import { ContainerComponentService } from './container/services/container-component.service';
 import { BoardComponentService } from './board/services/board-component.service';
+import { IdeaComponentService } from './idea/services/idea-component.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,12 @@ import { BoardComponentService } from './board/services/board-component.service'
     IdeaComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule],
-  providers: [AppService, ContainerComponentService, BoardComponentService],
+  providers: [
+    AppService,
+    ContainerComponentService,
+    BoardComponentService,
+    IdeaComponentService,
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

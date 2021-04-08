@@ -10,10 +10,14 @@ describe('ContainerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ContainerComponent ],
-      providers: [{provide: ContainerComponentService, useValue: {addNewIdea: () => Promise.resolve()}}]
-    })
-    .compileComponents();
+      declarations: [ContainerComponent],
+      providers: [
+        {
+          provide: ContainerComponentService,
+          useValue: { start: () => {}, addNewIdea: () => Promise.resolve() },
+        },
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {

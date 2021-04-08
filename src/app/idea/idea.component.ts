@@ -17,7 +17,6 @@ import { IdeaUpdateRequest } from '../models/idea-update-request';
   selector: 'app-idea',
   templateUrl: './idea.component.html',
   styleUrls: ['./idea.component.scss'],
-  providers: [IdeaComponentService],
 })
 export class IdeaComponent implements OnInit, AfterViewInit {
   constructor(private _componentService: IdeaComponentService) {}
